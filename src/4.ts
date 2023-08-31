@@ -15,7 +15,7 @@ class Person {
 }
 
 abstract class House {
-  constructor(public door: boolean, private key: Key, private tenants: Person[] = []) {}
+  constructor(protected door: boolean, protected key: Key, protected tenants: Person[] = []) {}
 
   comeIn(person: Person): void {
     if (this.door) {
@@ -27,19 +27,19 @@ abstract class House {
 }
 
 class MyHouse extends House {
-  constructor(key: Key) {
-    super(false, key);
-  }
-  openDoor(k: Key): void {
-    if (k === key) {
-      this.door === true;
+    openDoor(key: Key): void{
+      if (key.getSignature() === this.key.getSignature()) {
+         this.door = true
+         console.log("Door opened.");
+      } else {
+        console.log("Invalid key.");
+      }
     }
-  }
 }
 
 const key = new Key();
 
-const house = new MyHouse(key);
+const house = new MyHouse(true,key);
 const person = new Person(key);
 
 house.openDoor(person.getKey());

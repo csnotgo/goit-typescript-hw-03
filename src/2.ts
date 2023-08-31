@@ -28,6 +28,10 @@ class Manager extends Employee {
   constructor() {
     super("", "", 1000);
   }
+
+  setSalary(){
+    this.salary += 10000;
+  }
   // Реалізуйте конструктор та збільшіть salary на 10000
 }
 
